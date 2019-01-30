@@ -18,7 +18,23 @@ public class Categoria implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	private String end;
 	
+	public Categoria(Integer id, String nome, String end) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.end = end;
+	}
+
+	public String getEnd() {
+		return end;
+	}
+
+	public void setEnd(String end) {
+		this.end = end;
+	}
+
 	public Categoria() {}
 	
 	public Categoria(Integer id, String nome) {
