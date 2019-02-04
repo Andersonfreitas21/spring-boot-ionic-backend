@@ -1,33 +1,34 @@
 package com.f5promotora.cursomc.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Estado {
+public class Cliente implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	private String email;
+	private String cpfOuCnpj;
+	//private TipoCliente tipo;
 	
-	@OneToMany(mappedBy="estado")
-	private List<Cidade> cidades = new ArrayList<>();
+	public Cliente (){}
 	
-	public Estado() {}
-	
-	public Estado(Integer id, String nome) {
+	public Cliente(Integer id, String nome, String email, String cpfOuCnpj) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.email = email;
+		this.cpfOuCnpj = cpfOuCnpj;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -39,6 +40,18 @@ public class Estado {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getCpfOuCnpj() {
+		return cpfOuCnpj;
+	}
+	public void setCpfOuCnpj(String cpfOuCnpj) {
+		this.cpfOuCnpj = cpfOuCnpj;
 	}
 	@Override
 	public int hashCode() {
@@ -55,7 +68,7 @@ public class Estado {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Estado other = (Estado) obj;
+		Cliente other = (Cliente) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -63,19 +76,11 @@ public class Estado {
 			return false;
 		return true;
 	}
-
-	/**
-	 * @return the cidades
-	 */
-	public List<Cidade> getCidades() {
-		return cidades;
-	}
-
-	/**
-	 * @param cidades the cidades to set
-	 */
-	public void setCidades(List<Cidade> cidades) {
-		this.cidades = cidades;
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nome=" + nome + ", email=" + email + ", cpfOuCnpj=" + cpfOuCnpj + "]";
 	}
 	
+	
+
 }

@@ -1,44 +1,41 @@
 package com.f5promotora.cursomc.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Estado {
+public class Pedido implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
+	private Date instante;
 	
-	@OneToMany(mappedBy="estado")
-	private List<Cidade> cidades = new ArrayList<>();
+	public Pedido() {}
 	
-	public Estado() {}
-	
-	public Estado(Integer id, String nome) {
+	public Pedido(Integer id, Date instante) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.instante = instante;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public Date getInstante() {
+		return instante;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setInstante(Date instante) {
+		this.instante = instante;
 	}
 	@Override
 	public int hashCode() {
@@ -55,7 +52,7 @@ public class Estado {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Estado other = (Estado) obj;
+		Pedido other = (Pedido) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -63,19 +60,11 @@ public class Estado {
 			return false;
 		return true;
 	}
-
-	/**
-	 * @return the cidades
-	 */
-	public List<Cidade> getCidades() {
-		return cidades;
-	}
-
-	/**
-	 * @param cidades the cidades to set
-	 */
-	public void setCidades(List<Cidade> cidades) {
-		this.cidades = cidades;
+	
+	@Override
+	public String toString() {
+		return "Pedido [id=" + id + ", instante=" + instante + "]";
 	}
 	
+
 }
