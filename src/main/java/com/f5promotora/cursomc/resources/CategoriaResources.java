@@ -13,7 +13,7 @@ import com.f5promotora.cursomc.services.CategoriaService;
 
 
 @RestController
-@RequestMapping(value ="/categoriasv1")
+@RequestMapping(value ="/categorias")
 public class CategoriaResources {
 	
 	@Autowired
