@@ -39,7 +39,6 @@ public class Categoria implements Serializable {
 	}
 
 
-
 	public Integer getId() {
 		return id;
 	}
