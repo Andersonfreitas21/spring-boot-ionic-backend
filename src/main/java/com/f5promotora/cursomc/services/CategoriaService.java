@@ -1,5 +1,6 @@
 package com.f5promotora.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.f5promotora.cursomc.domain.Categoria;
-import com.f5promotora.cursomc.repositories.CategoriaRepository;
 import com.f5promotora.cursomc.exceptions.DataIntegrityException;
 import com.f5promotora.cursomc.exceptions.ObjectNotFoundException;
+import com.f5promotora.cursomc.repositories.CategoriaRepository;
 
 @Service
 public class CategoriaService {
@@ -21,6 +22,10 @@ public class CategoriaService {
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName(), null));
+	}
+	
+	public List<Categoria> findAll() {
+		return repo.findAll();
 	}
 
 	public Categoria insert(Categoria obj) {
