@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.f5promotora.cursomc.domain.Categoria;
+import com.f5promotora.cursomc.domain.Cliente;
 import com.f5promotora.cursomc.dto.CategoriaDTO;
 import com.f5promotora.cursomc.exceptions.DataIntegrityException;
 import com.f5promotora.cursomc.exceptions.ObjectNotFoundException;
@@ -36,10 +37,16 @@ public class CategoriaService {
 		obj.setId(null);
 		return repo.save(obj);
 	}
+	
 
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Categoria newObj = find(obj.getId());
+		updateDate(newObj,obj);
+		return repo.save(newObj);
+	}
+
+	private void updateDate(Categoria newObj, Categoria obj) {
+		newObj.setNome(obj.getNome());
 	}
 
 	public void delete(Integer id) {
