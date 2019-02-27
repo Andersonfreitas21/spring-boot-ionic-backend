@@ -38,7 +38,6 @@ public class ClienteService {
 
 	public Cliente update(Cliente obj) {
 		Cliente newObj = find(obj.getId());
-<<<<<<< HEAD
 		updateData(newObj,obj);
 		return repo.save(newObj);
 	}
@@ -46,16 +45,6 @@ public class ClienteService {
 	private void updateData(Cliente newObj, Cliente obj) {
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
-=======
-		updateDate(newObj, obj);
-		return repo.save(newObj);
-	}
-
-	private void updateDate(Cliente newObj, Cliente obj) {
-		newObj.setNome(obj.getNome());
-		newObj.setEmail(obj.getEmail());
-		
->>>>>>> 2c3a40835f44f7b4b21bfcfe144c2f075ea0e65a
 	}
 
 	public void delete(Integer id) {
@@ -63,11 +52,7 @@ public class ClienteService {
 		try {
 			repo.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-<<<<<<< HEAD
 			throw new DataIntegrityException("Não é possível excluir uma Cliente que possue pedidos.");
-=======
-			throw new DataIntegrityException("Não é possível excluir porque há entidades relacionadas.");
->>>>>>> 2c3a40835f44f7b4b21bfcfe144c2f075ea0e65a
 		}
 	}
 	
@@ -77,11 +62,7 @@ public class ClienteService {
 	}
 	
 	public Cliente fromDTO(ClienteDTO objDto) {
-<<<<<<< HEAD
 		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null);
-=======
-		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(),null,null);
->>>>>>> 2c3a40835f44f7b4b21bfcfe144c2f075ea0e65a
 	}
 
 }
